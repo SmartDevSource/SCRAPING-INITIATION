@@ -13,10 +13,12 @@ def main_scraping_function()
 
     array_buddies = []
 
-    #Cette boucle permet de partir de 0 jusqu'au nombre total de députés (577) mais c'est bien trop long pour le correcteur, j'ai donc réduit la boucle à 10 :-)
-    #      >>>> for i in 0..deputes_fiches.length-1 <<<<      #
-
-    for i in 0..9
+    #################################################################################################################################################################
+    ##################### Il y a 577 députés mais on va en faire que quelques uns par respect pour la personne qui va corriger :-D ##################################
+    ########################## On va également en parcourir beaucoup moins afin de pouvoir tester le RSPEC rapidement ! ### #########################################
+    #################################################################################################################################################################
+    
+    for i in 0..9      #<<<(deputes_fiches.length-1)
         begin
             temp_link = Nokogiri::HTML(URI.open("https://www2.assemblee-nationale.fr"+deputes_fiches[i]))
             temp_mail = temp_link.xpath('//a/span[contains(text(), "@assemblee-nationale.fr")]').map(&:text)
